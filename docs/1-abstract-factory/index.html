@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abstract Factory</title>
+</head>
+
+<body>
+
+  <a href="https://www.youtube.com/watch?v=fv2v1csnMyg&list=WL&index=7" target="_blank" rel="noopener noreferrer">
+    https://www.youtube.com/watch?v=fv2v1csnMyg&list=WL&index=7
+  </a>
+
+  <script>
+    class RickFactory {
+      create() {
+        throw new Error('This method must be implemented');
+      }
+    }
+
+    class HumanRickFactory extends RickFactory {
+      create() {
+        return new HumanRick();
+      }
+    }
+
+    class ShrimpRickFactory extends RickFactory {
+      create() {
+        return new ShrimpRick();
+      }
+    }
+
+    class TeddyRickFactory extends RickFactory {
+      create() {
+        return new TeddyRick();
+      }
+    }
+
+    class Rick {
+      constructor () { }
+    }
+
+    class HumanRick extends Rick {
+      constructor () {
+        super();
+      }
+    }
+
+    class ShrimpRick extends Rick {
+      constructor () {
+        super();
+      }
+    }
+
+    class TeddyRick extends Rick {
+      constructor () {
+        super();
+      }
+    }
+
+    class App {
+      constructor () {
+        this.factories = {
+          'human': new HumanRickFactory(),
+          'shrimp': new ShrimpRickFactory(),
+          'teddy': new TeddyRickFactory(),
+        };
+      }
+
+      createRick({ variant }) {
+        if (!Object.keys(this.factories).includes(variant))
+          throw new Error('Variant not available');
+
+        return this.factories[variant].create();
+      }
+    }
+
+    const app = new App();
+
+  </script>
+
+</body>
+
+</html>

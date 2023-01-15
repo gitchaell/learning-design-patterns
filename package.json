@@ -2,11 +2,11 @@
 	"name": "learning-design-patterns",
 	"version": "1.0.0",
 	"description": "Practical examples to understand the concepts of design patterns.",
-	"main": "public/index.js",
+	"main": "docs/index.js",
 	"scripts": {
 		"build": "npx tsc",
-		"start": "node public/index.js",
-		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q public/index.js\""
+		"start": "node docs/index.js",
+		"dev": "concurrently \"npx tsc --watch\" \"nodemon -q docs/index.js\""
 	},
 	"repository": {
 		"type": "git",
