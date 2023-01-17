@@ -1,85 +1,55 @@
-// abstract class Rick {
-//   constructor() { }
-// }
+enum Specie {
+  Human = 'Human',
+  Shrimp = 'Shrimp',
+  Teddy = 'Teddy',
+  Wasp = 'Wasp',
+}
 
-// class HumanRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+class Rick {
+  dna?: string;
+  name: string;
+  specie: Specie;
 
-// class ShrimpRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+  constructor(specie: Specie) {
+    this.name = 'Morty Smith';
+    this.specie = specie;
 
-// class TeddyRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+    if (specie === Specie.Human) this.dna = 'R-TGAGC[4]-K';
+    if (specie === Specie.Shrimp) this.dna = 'R-AGTGG[10]-K';
+    if (specie === Specie.Teddy) this.dna = 'R-GACTG[4]-K';
+    if (specie === Specie.Wasp) this.dna = 'R-AGCTG[6]-K';
+  }
+}
 
-// class WaspRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+class Morty {
+  dna?: string;
+  name: string;
+  specie: Specie;
 
-// abstract class Morty {
-//   constructor() { }
-// }
+  constructor(specie: Specie) {
+    this.name = 'Morty Smith';
+    this.specie = specie;
 
-// class HumanMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+    if (specie === Specie.Human) this.dna = 'M-GACTA[4]-Y';
+    if (specie === Specie.Shrimp) this.dna = 'M-TGAGA[10]-Y';
+    if (specie === Specie.Teddy) this.dna = 'M-AGTGG[4]-Y';
+    if (specie === Specie.Wasp) this.dna = 'M-GCTAG[6]-Y';
+  }
+}
 
-// class ShrimpMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+class PhoenixOperation {
 
-// class TeddyMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+  execute(): [Rick, Morty] {
+    const specie = this.randomSpecie();
+    return [new Rick(specie), new Morty(specie)];
+  }
 
-// class WaspMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
-
-// enum Universe {
-//   Human = 'human',
-//   Shrimp = 'shrimp',
-//   Teddy = 'teddy',
-//   Wasp = 'wasp',
-// }
-
-// class PhoenixOperation {
-
-//   execute(): Rick {
-//     const universe = this.randomUniverse();
-
-//     if (universe === Universe.Human) return [new HumanRick(), new HumanMorty()];
-//     if (universe === Universe.Shrimp) return [new ShrimpRick(), new ShrimpMorty()];
-//     if (universe === Universe.Teddy) return [new TeddyRick(), new TeddyMorty()];
-//     if (universe === Universe.Wasp) return [new WaspRick(), new WaspMorty()];
-
-//     throw new Error();
-//   }
-
-//   randomUniverse(): string {
-//     const universes = Object.values(Universe);
-//     const index = Math.floor(Math.random() * universes.length);
-//     return universes[index];
-//   }
-// }
+  randomSpecie(): Specie {
+    const species = Object.values(Specie);
+    const index = Math.floor(Math.random() * species.length);
+    return species[index];
+  }
+}
 
 
-// const phoenixOperation = new PhoenixOperation();
+const phoenixOperation = new PhoenixOperation();
