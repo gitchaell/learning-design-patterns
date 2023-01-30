@@ -1,138 +1,187 @@
-// abstract class Rick {
-//   constructor() { }
-// }
+enum Specie {
+  Human = 'human',
+  Shrimp = 'shrimp',
+  Pickle = 'pickle',
+}
 
-// class HumanRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+abstract class Rick {
+  name: string;
+  specie: Specie;
 
-// class ShrimpRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+  constructor(specie: Specie) {
+    this.name = 'Rick Sanchez';
+    this.specie = specie;
+  }
 
-// class TeddyRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+  getAspect() {
+    throw new Error('This method must be implemented');
+  }
+}
 
-// class WaspRick extends Rick {
-//   constructor() {
-//     super();
-//   }
-// }
+class HumanRick extends Rick {
+  constructor() {
+    super(Specie.Human);
+  }
 
-// abstract class Morty {
-//   constructor() { }
-// }
+  getAspect() {
+    return { head: {}, body: {}, }
+  }
+}
 
-// class HumanMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+class ShrimpRick extends Rick {
+  constructor() {
+    super(Specie.Shrimp);
+  }
 
-// class ShrimpMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+  getAspect() {
+    return { head: {}, body: {}, }
+  }
+}
 
-// class TeddyMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+class PickleRick extends Rick {
+  constructor() {
+    super(Specie.Pickle);
+  }
 
-// class WaspMorty extends Morty {
-//   constructor() {
-//     super();
-//   }
-// }
+  getAspect() {
+    return { head: {}, body: {}, }
+  }
+}
 
-// abstract class CloneFactory {
-//   cloneRick(): Rick {
-//     throw new Error('This method must be implemented');
-//   }
-//   cloneMorty(): Morty {
-//     throw new Error('This method must be implemented');
-//   }
-// }
+abstract class Morty {
+  name: string;
+  specie: Specie;
 
-// class HumanCloneFactory extends CloneFactory {
-//   cloneRick(): HumanRick {
-//     return new HumanRick();
-//   }
-//   cloneMorty(): HumanMorty {
-//     return new HumanMorty();
-//   }
-// }
+  constructor(specie: Specie) {
+    this.name = 'Morty Smith';
+    this.specie = specie;
+  }
 
-// class ShrimpCloneFactory extends CloneFactory {
-//   cloneRick(): ShrimpRick {
-//     return new ShrimpRick();
-//   }
-//   cloneMorty(): ShrimpMorty {
-//     return new ShrimpMorty();
-//   }
-// }
+  getAspect() {
+    throw new Error('This method must be implemented');
+  }
+}
 
-// class TeddyCloneFactory extends CloneFactory {
-//   cloneRick(): TeddyRick {
-//     return new TeddyRick();
-//   }
-//   cloneMorty(): TeddyMorty {
-//     return new TeddyMorty();
-//   }
-// }
+class HumanMorty extends Morty {
+  constructor() {
+    super(Specie.Human);
+  }
+}
 
-// class WaspCloneFactory extends CloneFactory {
-//   cloneRick(): WaspRick {
-//     return new WaspRick();
-//   }
-//   cloneMorty(): WaspMorty {
-//     return new WaspMorty();
-//   }
-// }
+class ShrimpMorty extends Morty {
+  constructor() {
+    super(Specie.Shrimp);
+  }
+}
 
-// enum Universe {
-//   Human = 'human',
-//   Shrimp = 'shrimp',
-//   Teddy = 'teddy',
-//   Wasp = 'wasp',
-// }
+class PickleMorty extends Morty {
+  constructor() {
+    super(Specie.Pickle);
+  }
+}
 
-// class PhoenixOperation {
-//   private cloners: Record<string, CloneFactory> = {
-//     [Universe.Human]: new HumanCloneFactory(),
-//     [Universe.Shrimp]: new ShrimpCloneFactory(),
-//     [Universe.Teddy]: new TeddyCloneFactory(),
-//     [Universe.Wasp]: new WaspCloneFactory(),
-//   };
+abstract class Jerry {
+  name: string;
+  specie: Specie;
 
-//   execute(): [Rick, Morty] {
-//     const universe = this.randomUniverse();
-//     return [
-//       this.cloners[universe].cloneRick(),
-//       this.cloners[universe].cloneMorty(),
-//     ];
-//   }
+  constructor(specie: Specie) {
+    this.name = 'Jerry Smith';
+    this.specie = specie;
+  }
 
-//   private randomUniverse(): string {
-//     const universes = Object.values(Universe);
-//     const index = Math.floor(Math.random() * universes.length);
-//     return universes[index];
-//   }
+  getAspect() {
+    throw new Error('This method must be implemented');
+  }
+}
 
-//   // randomDimension(): string {
-//   //   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-//   //   return `${letters[Math.floor(Math.random() * letters.length)]}-${Math.round(Math.random() * 999)}`;
-//   // }
-// }
+class HumanJerry extends Jerry {
+  constructor() {
+    super(Specie.Human);
+  }
+}
+
+class ShrimpJerry extends Jerry {
+  constructor() {
+    super(Specie.Shrimp);
+  }
+}
+
+class PickleJerry extends Jerry {
+  constructor() {
+    super(Specie.Pickle);
+  }
+}
+
+abstract class CloneFactory {
+  createRick(): Rick {
+    throw new Error('This method must be implemented');
+  }
+  createMorty(): Morty {
+    throw new Error('This method must be implemented');
+  }
+  createJerry(): Jerry {
+    throw new Error('This method must be implemented');
+  }
+}
+
+class HumanCloneFactory extends CloneFactory {
+  createRick(): HumanRick {
+    return new HumanRick();
+  }
+  createMorty(): HumanMorty {
+    return new HumanMorty();
+  }
+  createJerry(): HumanJerry {
+    return new HumanJerry();
+  }
+}
+
+class ShrimpCloneFactory extends CloneFactory {
+  createRick(): ShrimpRick {
+    return new ShrimpRick();
+  }
+  createMorty(): ShrimpMorty {
+    return new ShrimpMorty();
+  }
+  createJerry(): ShrimpJerry {
+    return new ShrimpJerry();
+  }
+}
+
+class PickleCloneFactory extends CloneFactory {
+  createRick(): PickleRick {
+    return new PickleRick();
+  }
+  createMorty(): PickleMorty {
+    return new PickleMorty();
+  }
+  createJerry(): PickleJerry {
+    return new PickleJerry();
+  }
+}
+
+class Cloner {
+  private factories: Record<Specie, CloneFactory> = {
+    [Specie.Human]: new HumanCloneFactory(),
+    [Specie.Shrimp]: new ShrimpCloneFactory(),
+    [Specie.Pickle]: new PickleCloneFactory(),
+  };
+
+  execute(): [Rick, Morty, Jerry] {
+    const specie = this.getSpecie();
+    return [
+      this.factories[specie].createRick(),
+      this.factories[specie].createMorty(),
+      this.factories[specie].createJerry(),
+    ];
+  }
+
+  private getSpecie(): Specie {
+    const species = Object.values(Specie);
+    const index = Math.floor(Math.random() * species.length);
+    return species[index];
+  }
+}
 
 
-// const phoenixOperation = new PhoenixOperation();
+const cloner = new Cloner();

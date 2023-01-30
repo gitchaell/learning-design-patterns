@@ -1,55 +1,62 @@
-enum Specie {
-  Human = 'Human',
-  Shrimp = 'Shrimp',
-  Teddy = 'Teddy',
-  Wasp = 'Wasp',
-}
+// enum Specie {
+//   Human = 'Human',
+//   Shrimp = 'Shrimp',
+//   Pickle = 'Pickle',
+// }
 
-class Rick {
-  dna?: string;
-  name: string;
-  specie: Specie;
+// class Rick {
+//   name: string;
+//   specie: Specie;
 
-  constructor(specie: Specie) {
-    this.name = 'Morty Smith';
-    this.specie = specie;
+//   constructor(specie: Specie) {
+//     this.name = 'Rick Sanchez';
+//     this.specie = specie;
+//   }
 
-    if (specie === Specie.Human) this.dna = 'R-TGAGC[4]-K';
-    if (specie === Specie.Shrimp) this.dna = 'R-AGTGG[10]-K';
-    if (specie === Specie.Teddy) this.dna = 'R-GACTG[4]-K';
-    if (specie === Specie.Wasp) this.dna = 'R-AGCTG[6]-K';
-  }
-}
+//   getAspect() {
+//     if (this.specie === Specie.Human) return { head: {}, body: {}, }
+//     if (this.specie === Specie.Shrimp) return { head: {}, body: {}, }
+//     if (this.specie === Specie.Pickle) return { head: {}, body: {}, }
+//   }
+// }
 
-class Morty {
-  dna?: string;
-  name: string;
-  specie: Specie;
+// class Morty {
+//   name: string;
+//   specie: Specie;
 
-  constructor(specie: Specie) {
-    this.name = 'Morty Smith';
-    this.specie = specie;
+//   constructor(specie: Specie) {
+//     this.name = 'Morty Smith';
+//     this.specie = specie;
+//   }
+// }
 
-    if (specie === Specie.Human) this.dna = 'M-GACTA[4]-Y';
-    if (specie === Specie.Shrimp) this.dna = 'M-TGAGA[10]-Y';
-    if (specie === Specie.Teddy) this.dna = 'M-AGTGG[4]-Y';
-    if (specie === Specie.Wasp) this.dna = 'M-GCTAG[6]-Y';
-  }
-}
+// class Jerry {
+//   name: string;
+//   specie: Specie;
 
-class PhoenixOperation {
+//   constructor(specie: Specie) {
+//     this.name = 'Jerry Smith';
+//     this.specie = specie;
+//   }
+// }
 
-  execute(): [Rick, Morty] {
-    const specie = this.randomSpecie();
-    return [new Rick(specie), new Morty(specie)];
-  }
+// class Cloner {
 
-  randomSpecie(): Specie {
-    const species = Object.values(Specie);
-    const index = Math.floor(Math.random() * species.length);
-    return species[index];
-  }
-}
+//   execute(): [Rick, Morty, Jerry] {
+//     const specie = this.getSpecie();
+//     return [
+//       new Rick(specie),
+//       new Morty(specie),
+//       new Jerry(specie),
+//     ];
+//   }
+
+//   private getSpecie(): Specie {
+//     const species = Object.values(Specie);
+//     const index = Math.floor(Math.random() * species.length);
+//     return species[index];
+//   }
+// }
 
 
-const phoenixOperation = new PhoenixOperation();
+// const cloner = new Cloner();
